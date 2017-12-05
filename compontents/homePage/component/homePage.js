@@ -27,7 +27,7 @@ import ViewPager from 'react-native-viewpager';
 import ImPage from '../../imPage';
 
 let screen = Dimensions.get('window');
-let count = 0;
+// let count = 0;
 
 export default class homePage extends Component {
     constructor(props) {
@@ -70,17 +70,16 @@ export default class homePage extends Component {
         let {state, actions} = this.props;
         return (
             <View style={{flex:1}}>
-                
                 <View style={{width:screen.width,height:64,backgroundColor:'#999999'}}>
                     <TouchableOpacity onPress={() => {
-                        // this.viewpager.goToPage(this.state.currentPage);
-                        // this.setState({currentPage:(this.state.currentPage+1)%3});
+                        this.setState({currentPage:(this.state.currentPage+1)%3});
+                        this.viewpager.goToPage(this.state.currentPage);
 
-                        this.viewpager.goToPage(count);
-                        count = (count+1)%3;
+                        // this.viewpager.goToPage(count);
+                        // count = (count+1)%3;
                     }}>
                         <Text style={{textAlign:'center',paddingTop:20,lineHeight:44}}>
-                            {count}
+                            {this.state.currentPage}
                         </Text>
                     </TouchableOpacity>
                 </View>
@@ -95,7 +94,7 @@ export default class homePage extends Component {
                     dataSource={this.state.pages}
                     renderPage={this._renderPage}
                     // renderPageIndicator={false}
-                    onChangePage = {() => console.log('sssss')}/>
+                    onChangePage = {(page) => this.setState({currentPage:page})}/>
                     
              </View>
 
