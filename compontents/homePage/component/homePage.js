@@ -22,15 +22,19 @@ import {
     NativeModules,
     ScrollView
 } from 'react-native';
-var ViewPager = require('react-native-viewpager');
+import ViewPager from 'react-native-viewpager';
 
 import ImPage from '../../imPage';
 
 let screen = Dimensions.get('window');
+let count = 0;
 
 export default class homePage extends Component {
     constructor(props) {
         super(props);
+
+        var ds = new ViewPager.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
         this.state = {
             fadeAnim: new Animated.Value(0),
             w:100,
@@ -39,7 +43,10 @@ export default class homePage extends Component {
             modalVisible: false,
             falseSwitchIsOn: false,
             language:'java',
-            showPicker: false
+            showPicker: false,
+            pages:ds.cloneWithPages(props.state.pages),
+            currentPage:0,
+            initialPage:0
         };
     }
 
@@ -62,18 +69,35 @@ export default class homePage extends Component {
     render() {
         let {state, actions} = this.props;
         return (
+            <View style={{flex:1}}>
+                
+                <View style={{width:screen.width,height:64,backgroundColor:'#999999'}}>
+                    <TouchableOpacity onPress={() => {
+                        // this.viewpager.goToPage(this.state.currentPage);
+                        // this.setState({currentPage:(this.state.currentPage+1)%3});
 
-            <ViewPager 
-            style={{flex:1}}
-            locked={true}
-            // initialPage={0}
-            autoPlay={false}
-            isLoop={false}
-            dataSource={state.pages}
-            renderPage={() => this._renderPage()}
-            // renderPageIndicator={<Text>loading...</Text>}
-            // onChangePage = {()=>{console.log('sssss')}}
-             />
+                        this.viewpager.goToPage(count);
+                        count = (count+1)%3;
+                    }}>
+                        <Text style={{textAlign:'center',paddingTop:20,lineHeight:44}}>
+                            {count}
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+
+                <ViewPager 
+                    ref={(viewpager) => {this.viewpager = viewpager}}
+                    style={{flex:1}}
+                    locked={false}
+                    initialPage={this.state.initialPage}
+                    autoPlay={false}
+                    isLoop={false}
+                    dataSource={this.state.pages}
+                    renderPage={this._renderPage}
+                    // renderPageIndicator={false}
+                    onChangePage = {() => console.log('sssss')}/>
+                    
+             </View>
 
 
             // <ScrollView>
@@ -255,9 +279,16 @@ export default class homePage extends Component {
     }
 
     _renderPage(data,pageId) {
+        console.log(pageId,'...................');
         return (
-            <ScrollView key={pageId+''}>
-                <Text>ssss</Text>
+            <ScrollView
+            style={{
+                flex:1,
+                backgroundColor:pageId%2==0?'#ff0000':'#00ff00',
+                paddingVertical: 20}}
+            key={pageId+''}
+            >
+                <Text style={{textAlign:'center'}}>{data.title}</Text>
             </ScrollView>
         );
     }
