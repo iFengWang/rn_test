@@ -2,7 +2,6 @@ import * as actionType from '../action/actionType';
 import * as config from '../config';
 
 function reducer(state=config.data, action) {
-    console.log(state.page);
     switch(action.type) {
         case actionType.ADD_DATA:
             let newAry = state.concat(action.item);

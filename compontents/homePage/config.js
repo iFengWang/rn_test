@@ -30,15 +30,15 @@ export const data = {
     items:[],
     pages:[
         {
-            id:10000,
+            pid:10000,
             title:'今天'
         },
         {
-            id:10001,
+            pid:10001,
             title:'工作圈'
         },
         {
-            id:10002,
+            pid:10002,
             title:'仪表盘'
         },
     ]

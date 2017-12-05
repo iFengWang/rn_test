@@ -43,43 +43,6 @@ export default class homePage extends Component {
         };
     }
 
-    _onPress = () => {
-        // Animate the update
-        LayoutAnimation.spring();
-        this.setState({
-            w: this.state.w + 15, 
-            h: this.state.h + 15,
-            show:!this.state.show
-        });
-        InteractionManager.runAfterInteractions(()=>{
-
-        });
-    }
-
-    _onCallNative() {
-        // NativeModules.TestModule.showAlert('找呀找呀找朋友！找到一个好朋友');
-
-        // return async function (dispatch) {
-        //     await NativeModules.TestModule.callfun2('-30');
-        // }
-
-        NativeModules.TestModule.callfun2('-30').then(
-            obj => {
-                alert(obj.name+obj.age);
-            }
-        );
-    }
-
-    setModalVisible(visible) {
-        this.setState({modalVisible: visible});
-    }
-
-    _renderPage() {
-        <ScrollView>
-            <Text>ssss</Text>
-        </ScrollView>
-    }
-
     componentWillMount() {
         // let {actions} = this.props;
         // actions.showData();
@@ -101,14 +64,16 @@ export default class homePage extends Component {
         return (
 
             <ViewPager 
-            locked = {true}
-            initialPage = {0}
-            autoPlay = {false}
-            isLoop = {false}
-            dataSource={this.state.pages}
-            renderPage={this._renderPage}
+            style={{flex:1}}
+            locked={true}
+            // initialPage={0}
+            autoPlay={false}
+            isLoop={false}
+            dataSource={state.pages}
+            renderPage={() => this._renderPage()}
             renderPageIndicator={<Text>loading...</Text>}
-            onChangePage = {()=>{}} />
+            onChangePage = {()=>{}}
+             />
 
 
             // <ScrollView>
@@ -121,7 +86,7 @@ export default class homePage extends Component {
             //             <Text style={{width:200,height:40,backgroundColor:'green',textAlign:'center',lineHeight:40,margin:2}}>走Redux流程</Text>
             //     </TouchableOpacity>
 
-            //     <TouchableOpacity onPress={() => actions._onCallNative()}>
+            //     <TouchableOpacity onPress={() => this._onCallNative('aaa', 'bbb')}>
             //             <Text style={{width:200,height:40,backgroundColor:'green',textAlign:'center',lineHeight:40,margin:2}}>调Native</Text>
             //     </TouchableOpacity>
 
@@ -151,7 +116,7 @@ export default class homePage extends Component {
 
 
             //     <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
-            //     <TouchableOpacity onPress={this._onPress}>
+            //     <TouchableOpacity onPress={() => this._onPress()}>
             //         <View style={styles.button}>
             //         <Text style={styles.buttonText}>Press me!</Text>
             //         </View>
@@ -256,6 +221,44 @@ export default class homePage extends Component {
             //     <StatusBar barStyle='default' />
 
             // </ScrollView>
+        );
+    }
+
+    _onPress() {
+        // Animate the update
+        LayoutAnimation.spring();
+        this.setState({
+            w: this.state.w + 15, 
+            h: this.state.h + 15,
+            show:!this.state.show
+        });
+        InteractionManager.runAfterInteractions(()=>{
+
+        });
+    }
+
+    _onCallNative (p1,p2) {
+        NativeModules.TestModule.showAlert('找呀找呀找朋友！找到一个好朋友');
+        // return async function (dispatch) {
+        //     await NativeModules.TestModule.callfun2('-30');
+        // }
+
+        // NativeModules.TestModule.callfun2('-30').then(
+        //     obj => {
+        //         alert(obj.name+obj.age);
+        //     }
+        // );
+    }
+
+    setModalVisible(visible) {
+        this.setState({modalVisible: visible});
+    }
+
+    _renderPage(data,pageId) {
+        return (
+            <ScrollView key={pageId+''}>
+                <Text>ssss</Text>
+            </ScrollView>
         );
     }
 }
