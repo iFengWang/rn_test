@@ -71,8 +71,8 @@ export default class homePage extends Component {
             isLoop={false}
             dataSource={state.pages}
             renderPage={() => this._renderPage()}
-            renderPageIndicator={<Text>loading...</Text>}
-            onChangePage = {()=>{}}
+            // renderPageIndicator={<Text>loading...</Text>}
+            // onChangePage = {()=>{console.log('sssss')}}
              />
 
 
@@ -161,10 +161,10 @@ export default class homePage extends Component {
             //         <Text style={{paddingLeft:20,paddingRight:20,lineHeight:25, color:'#666666',height:90}}>正文在此，好人一生平安，我们都有一个家，名字叫中国，兄弟姐妹都很多，景色也不错！</Text>
 
             //         <View style={{flexDirection:'row',justifyContent:'center',alignItems:'flex-end'}}>
-            //             <TouchableOpacity onPress={() => {this.setModalVisible(!this.state.modalVisible)}}>
+            //             <TouchableOpacity onPress={() => {this._setModalVisible(!this.state.modalVisible)}}>
             //                 <Text style={{margin:10,width:80,height:35,borderRadius:5,borderWidth:1,textAlign:'center',lineHeight:35}}>取消</Text>
             //             </TouchableOpacity>
-            //             <TouchableOpacity onPress={() => {this.setModalVisible(!this.state.modalVisible)}}>
+            //             <TouchableOpacity onPress={() => {this._setModalVisible(!this.state.modalVisible)}}>
             //                 <Text style={{margin:10,width:80,height:35,borderRadius:5,borderWidth:1,textAlign:'center',lineHeight:35}}>确定</Text>
             //             </TouchableOpacity>
             //         </View>
@@ -173,7 +173,7 @@ export default class homePage extends Component {
             //         </View>
             //     </Modal>
 
-            //     <TouchableHighlight onPress={() => {this.setModalVisible(true)}}>
+            //     <TouchableHighlight onPress={() => {this._setModalVisible(true)}}>
             //         <Text>Show Modal</Text>
             //     </TouchableHighlight>
             //     <View style={{height:150, width:screen.width}}>
@@ -250,7 +250,7 @@ export default class homePage extends Component {
         // );
     }
 
-    setModalVisible(visible) {
+    _setModalVisible(visible) {
         this.setState({modalVisible: visible});
     }
 
