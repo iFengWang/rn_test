@@ -27,7 +27,6 @@ import ViewPager from 'react-native-viewpager';
 import ImPage from '../../imPage';
 
 let screen = Dimensions.get('window');
-// let count = 0;
 
 export default class homePage extends Component {
     constructor(props) {
@@ -45,14 +44,14 @@ export default class homePage extends Component {
             language:'java',
             showPicker: false,
             pages:ds.cloneWithPages(props.state.pages),
-            currentPage:0,
-            initialPage:0
+            currentPage:2
         };
     }
 
     componentWillMount() {
         // let {actions} = this.props;
         // actions.showData();
+        // alert(JSON.stringify(this.props.full));
     }
 
     componentDidMount() {
@@ -66,35 +65,37 @@ export default class homePage extends Component {
         ).start();
     }
 
+    _renderNavBar(state) {
+
+        return (
+            <View style={{width:screen.width,height:64,backgroundColor:'#999999',flexDirection:'row',justifyContent:'center'}}>
+                {state.pages.map((page, index) => 
+                    <TouchableOpacity key={index} onPress={() => this.viewpager.goToPage(index)}>
+                        <Text style={[styles.titleTxt,{color:this.state.currentPage==index?'#ff0000':'#000000'}]}>{page.title}</Text>
+                    </TouchableOpacity>
+                )}
+
+            </View>
+        );
+    }
+
     render() {
         let {state, actions} = this.props;
         return (
             <View style={{flex:1}}>
-                <View style={{width:screen.width,height:64,backgroundColor:'#999999'}}>
-                    <TouchableOpacity onPress={() => {
-                        this.setState({currentPage:(this.state.currentPage+1)%3});
-                        this.viewpager.goToPage(this.state.currentPage);
-
-                        // this.viewpager.goToPage(count);
-                        // count = (count+1)%3;
-                    }}>
-                        <Text style={{textAlign:'center',paddingTop:20,lineHeight:44}}>
-                            {this.state.currentPage}
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-
+                {this._renderNavBar(state)}
                 <ViewPager 
                     ref={(viewpager) => {this.viewpager = viewpager}}
                     style={{flex:1}}
                     locked={false}
-                    initialPage={this.state.initialPage}
+                    initialPage={this.state.currentPage}
                     autoPlay={false}
                     isLoop={false}
                     dataSource={this.state.pages}
                     renderPage={this._renderPage}
-                    // renderPageIndicator={false}
-                    onChangePage = {(page) => this.setState({currentPage:page})}/>
+                    renderPageIndicator={false}
+                    onChangePage = {(pageIndex) => this.setState({currentPage:pageIndex})}
+                />
                     
              </View>
 
@@ -278,16 +279,14 @@ export default class homePage extends Component {
     }
 
     _renderPage(data,pageId) {
-        console.log(pageId,'...................');
         return (
             <ScrollView
             style={{
                 flex:1,
-                backgroundColor:pageId%2==0?'#ff0000':'#00ff00',
+                backgroundColor:pageId%2==0?'#CCCCCC':'#666666',
                 paddingVertical: 20}}
-            key={pageId+''}
-            >
-                <Text style={{textAlign:'center'}}>{data.title}</Text>
+            key={pageId+''} >
+                <Text style={{textAlign:'center'}}>{data.content}</Text>
             </ScrollView>
         );
     }
@@ -300,12 +299,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F5FCFF'
     },
-    box:{
+    box: {
         backgroundColor:'green'
     },
-    activity:{
+    activity: {
         // backgroundColor:'yellow',
         // borderWidth:1,
         // borderColor:'red'
+    },
+    titleTxt: {
+        width:60, 
+        paddingTop:20, 
+        lineHeight:40, 
+        textAlign:'center'
     }
 });

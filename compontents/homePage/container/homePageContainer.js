@@ -24,7 +24,7 @@ class homePageContainer extends Component {
 export default connect(
     state => ({
         state:state.homePageReducer,
-        // full:state
+        full:state
     }),
     dispatch => ({
         actions:bindActionCreators(actions,dispatch)

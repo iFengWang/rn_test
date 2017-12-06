@@ -20,7 +20,7 @@ class imContainer extends Component {
 export default connect(
     state =>({
         state:state.imReducer,
-        // full:state
+        full:state
     }),
     dispatch => ({
         action:bindActionCreators(ImAction,dispatch)
