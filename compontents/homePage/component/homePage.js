@@ -44,7 +44,7 @@ export default class homePage extends Component {
             language:'java',
             showPicker: false,
             pages:ds.cloneWithPages(props.state.pages),
-            currentPage:2
+            currentPage:0
         };
     }
 
@@ -286,7 +286,12 @@ export default class homePage extends Component {
                 backgroundColor:pageId%2==0?'#CCCCCC':'#666666',
                 paddingVertical: 20}}
             key={pageId+''} >
+                
+                {pageId==0 ?
+                <ImPage /> :
                 <Text style={{textAlign:'center'}}>{data.content}</Text>
+                }
+
             </ScrollView>
         );
     }
