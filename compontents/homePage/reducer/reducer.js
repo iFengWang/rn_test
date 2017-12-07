@@ -4,8 +4,11 @@ import * as config from '../config';
 function reducer(state=config.data, action) {
     switch(action.type) {
         case actionType.ADD_DATA:
-            let newAry = state.concat(action.item);
-            return newAry;
+            let newAry = state.items.concat(action.item);
+            return {
+                ...state,
+                newAry
+            };
         case actionType.START_REQUEST:
             return {
                 ...state,
