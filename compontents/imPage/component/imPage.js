@@ -7,7 +7,9 @@ import {
     StyleSheet,
     Platform,
     TouchableOpacity,
-    Dimensions
+    Dimensions,
+    Easing,
+    PanResponder
 } from 'react-native';
 
 import Immutable,{Map,List,Set} from 'immutable';
@@ -20,8 +22,13 @@ class imPage extends Component {
         super(props);
         this.state = {
             w:200,
-            h:100
+            h:100,
+            ov:new Animated.Value(1),
+            bounceValue:new Animated.Value(1),
+            transY:new Animated.Value(100),
+            postion:new Animated.ValueXY({x:20,y:100})
         }
+        this._panResponder = {};
     }
 
     componentWillMount() {
@@ -49,6 +56,16 @@ class imPage extends Component {
         // cursor.get('c');
 
         // alert(Platform.OS);
+
+        // this._panResponder = PanResponder.create({
+        //     onStartShouldSetPanResponder: this._returnTrue.bind(this),
+        //     onMoveShouldSetPanResponder: this._returnTrue.bind(this),
+        //     //手势开始处理
+        //     //手势移动时的处理
+        //     onPanResponderMove: Animated.event([null, {
+        //         dy : this.state.transY
+        //     }])
+        // });
     }
 
     render() {
@@ -59,29 +76,81 @@ class imPage extends Component {
                     {Object.keys(this.props.state).map(key => <Text key={key+''}>{this.props.state[key+''].name}</Text>)}
                 </View>
 
-                <View style={{width: this.state.w, height: this.state.h, backgroundColor:'red'}}>
+                <View style={{width:screen.width,height:50,backgroundColor:'gray'}} {...this._panResponder.panHandlers}></View>
+
+                <Animated.View ref='dongView' 
+                style={{
+                    width: this.state.w, 
+                    height: this.state.h, 
+                    backgroundColor:'red', 
+                    opacity:this.state.ov,
+                    transform: [
+                        {scale: this.state.bounceValue},
+                        {translateX : this.state.postion.x},
+                        {translateY : this.state.postion.x}
+                        ]}}>
                     <TouchableOpacity style={{width:100,height:40,backgroundColor:'green',margin:5}} onPress={() => this._onPress()}>
                         <Text>点击</Text>
                     </TouchableOpacity>
-                </View>
+                </Animated.View>
+
+                
 
             </Animated.View>
         );
     }
 
+    _returnTrue(e, gestureState) {
+        return true;
+    }
+
     _onPress() {
-        LayoutAnimation.configureNext({
-            duration: 700,   //持续时间
-            create: {
-                type: 'linear',
-                property: 'opacity'
-            },
-            update: {
-                type: 'spring',
-                springDamping: 0.4
-            }
-        });
-        this.setState({w: this.state.w - 20, h: this.state.h - 20})
+        // LayoutAnimation.configureNext({
+        //     duration: 700,   //持续时间
+        //     create: {
+        //         type: 'linear',
+        //         property: 'opacity'
+        //     },
+        //     update: {
+        //         type: 'spring',
+        //         springDamping: 0.4
+        //     }
+        // });
+        // this.setState({w: this.state.w - 20, h: this.state.h - 20});
+
+        // Animated.timing(this.state.ov, {
+        //     toValue:0,
+        //     duration:3000,
+        //     delay:3000,
+        //     easing:Easing.bezier(0.15, 0.73, 0.37, 1.2),
+        //     useNativeDriver:true
+        // }).start();
+
+        this.state.postion.setValue({x:20,y:100});
+        Animated.spring(
+            this.state.postion,{
+                toValue:{x:50,y:200},
+                friction: 7,     //摩擦系数
+                tension: 40,      //张力系数
+                // bounciness:5,
+                // speed:5
+              }
+        ).start();
+
+        // Animated.decay(
+        //     this.state.bounceValue,{
+        //         toValue:0.2,
+        //         velocity: 0.1,      //速度
+        //         deceleration: 0.9   //哀减
+        //       }
+        // ).start();
+
+        // this.state.ov.stopAnimation(val => {
+        //     console.log('监听动画值并停止动画......',val);
+        // });
+        // this.state.ov.addListener(val => {
+        //     console.log('监听动画值并停止动画......',val);
+        // });
     }
 
 }
