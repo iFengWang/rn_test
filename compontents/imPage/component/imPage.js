@@ -9,11 +9,14 @@ import {
     TouchableOpacity,
     Dimensions,
     Easing,
-    PanResponder
+    PanResponder,
+    ScrollView,
+    Image
 } from 'react-native';
 
 import Immutable,{Map,List,Set} from 'immutable';
 import Cursor from '../../../node_modules/immutable/contrib/cursor';
+import TwoPage from './twoPage';
 
 let screen = Dimensions.get('window');
 
@@ -26,9 +29,9 @@ class imPage extends Component {
             ov:new Animated.Value(1),
             bounceValue:new Animated.Value(1),
             transY:new Animated.Value(100),
-            postion:new Animated.ValueXY({x:20,y:100})
+            postion:new Animated.ValueXY({x:20,y:100}),
+            eventValue:new Animated.Value(1.0)
         }
-        this._panResponder = {};
     }
 
     componentWillMount() {
@@ -56,16 +59,6 @@ class imPage extends Component {
         // cursor.get('c');
 
         // alert(Platform.OS);
-
-        // this._panResponder = PanResponder.create({
-        //     onStartShouldSetPanResponder: this._returnTrue.bind(this),
-        //     onMoveShouldSetPanResponder: this._returnTrue.bind(this),
-        //     //手势开始处理
-        //     //手势移动时的处理
-        //     onPanResponderMove: Animated.event([null, {
-        //         dy : this.state.transY
-        //     }])
-        // });
     }
 
     render() {
@@ -76,7 +69,7 @@ class imPage extends Component {
                     {Object.keys(this.props.state).map(key => <Text key={key+''}>{this.props.state[key+''].name}</Text>)}
                 </View>
 
-                <View style={{width:screen.width,height:50,backgroundColor:'gray'}} {...this._panResponder.panHandlers}></View>
+                <TwoPage />
 
                 <Animated.View ref='dongView' 
                 style={{
@@ -94,14 +87,25 @@ class imPage extends Component {
                     </TouchableOpacity>
                 </Animated.View>
 
-                
-
+                <ScrollView 
+                    horizontal={false}
+                    showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={true}
+                    style={{margin:10,width:300,height:300,backgroundColor:'brown'}}
+                    onScroll={Animated.event(
+                            [{nativeEvent: {contentOffset: {y: this.state.eventValue}}}]
+                            )}
+                    scrollEventThrottle={100}>
+                        <Animated.Image
+                        source={require('../../../images/t2.png')}
+                        resizeMode="cover"
+                        style={{
+                            width:this.state.eventValue.interpolate({ inputRange:[0,300], outputRange:[100,300]}),
+                            height:500
+                        }} />
+                </ScrollView>
             </Animated.View>
         );
-    }
-
-    _returnTrue(e, gestureState) {
-        return true;
     }
 
     _onPress() {
@@ -126,7 +130,7 @@ class imPage extends Component {
         //     useNativeDriver:true
         // }).start();
 
-        this.state.postion.setValue({x:20,y:100});
+        // this.state.postion.setValue({x:20,y:100});
         Animated.spring(
             this.state.postion,{
                 toValue:{x:50,y:200},

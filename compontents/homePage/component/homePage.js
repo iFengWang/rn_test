@@ -90,7 +90,7 @@ export default class homePage extends Component {
                 <ViewPager 
                     ref={(viewpager) => {this.viewpager = viewpager}}
                     style={{flex:1}}
-                    locked={false}
+                    locked={true}
                     initialPage={this.state.currentPage}
                     autoPlay={false}
                     isLoop={false}
