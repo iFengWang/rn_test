@@ -17,6 +17,7 @@ import {
 import Immutable,{Map,List,Set} from 'immutable';
 import Cursor from '../../../node_modules/immutable/contrib/cursor';
 import TwoPage from './twoPage';
+import SvgPage from './svgPage';
 
 let screen = Dimensions.get('window');
 
@@ -70,8 +71,9 @@ class imPage extends Component {
                 </View>
 
                 <TwoPage />
+                <SvgPage active={false} />
 
-                <Animated.View ref='dongView' 
+                {/* <Animated.View ref='dongView' 
                 style={{
                     width: this.state.w, 
                     height: this.state.h, 
@@ -85,9 +87,9 @@ class imPage extends Component {
                     <TouchableOpacity style={{width:100,height:40,backgroundColor:'green',margin:5}} onPress={() => this._onPress()}>
                         <Text>点击</Text>
                     </TouchableOpacity>
-                </Animated.View>
+                </Animated.View> */}
 
-                <ScrollView 
+                {/* <ScrollView 
                     horizontal={false}
                     showsHorizontalScrollIndicator={false}
                     showsVerticalScrollIndicator={true}
@@ -97,13 +99,16 @@ class imPage extends Component {
                             )}
                     scrollEventThrottle={100}>
                         <Animated.Image
-                        source={require('../../../images/t2.png')}
+                        source={require('../../../resource/t2.png')}
                         resizeMode="cover"
                         style={{
                             width:this.state.eventValue.interpolate({ inputRange:[0,300], outputRange:[100,300]}),
                             height:500
                         }} />
-                </ScrollView>
+                </ScrollView> */}
+
+                
+
             </Animated.View>
         );
     }
