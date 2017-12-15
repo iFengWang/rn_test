@@ -11,6 +11,6 @@ import {
   Text
 } from 'react-native';
 import HomePage from './compontents/homePage';
-import ImPage from './compontents/imPage';
+// import ImPage from './compontents/imPage';
 
 AppRegistry.registerComponent('rn_test', () => HomePage);

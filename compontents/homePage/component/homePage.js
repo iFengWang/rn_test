@@ -26,7 +26,7 @@ import {
 } from 'react-native';
 import ViewPager from 'react-native-viewpager';
 
-import ImPage from '../../imPage';
+// import ImPage from '../../imPage';
 
 let screen = Dimensions.get('window');
 
@@ -143,7 +143,7 @@ export default class homePage extends Component {
                         flex:1,
                         backgroundColor:pageId%2==0?'#CCCCCC':'#666666'}}
                     key={pageId+''} >
-                        <ImPage />
+                        {/* <ImPage /> */}
                     </ScrollView>
                 );
             case '1':

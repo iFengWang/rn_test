@@ -13,6 +13,14 @@ import {
 } from 'react-native';
 
 import HomePage from './compontents/homePage';
-import ImPage from './compontents/imPage';
+// import ImPage from './compontents/imPage';
+
+// class Haha extends Component {
+//   render() {
+//     return (
+//       <View style={{flex:1, backgroundColor:'yellow'}}></View>
+//     );
+//   }
+// }
 
 AppRegistry.registerComponent('rn_test', () => HomePage);

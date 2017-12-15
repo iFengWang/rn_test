@@ -5,7 +5,8 @@ import {
     Text,
     PanResponder,
     Dimensions,
-    ART
+    ART,
+    AppState
 } from 'react-native';
 import { ADD_DATA } from '../../homePage/action/actionType';
 
@@ -20,7 +21,8 @@ class twoPage extends Component {
         super(props);
         this.state = {
             trans: new Animated.ValueXY(),
-            drag: false
+            drag: false,
+            currentAppState: AppState.currentState
         };
     }
 
@@ -59,6 +61,25 @@ class twoPage extends Component {
             return true;
             },
         });
+    }
+
+    componentDidMount() {
+        AppState.addEventListener('change',this._currentState);
+        AppState.addEventListener('memoryWarning',this._memoryWarn);
+    }
+
+    componentWillUnmount() {
+        AppState.removeEventListener('change',this._currentState);
+        AppState.removeEventListener('memoryWarning',this._memoryWarn);
+    }
+
+    _currentState = (nextAppState) => {
+        console.log('curentState......',nextAppState);
+        this.setState({currentState:nextAppState});
+    }
+
+    _memoryWarn = () => {
+        console.log('内存不足啦');
     }
     
     render() {

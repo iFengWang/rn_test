@@ -4,21 +4,21 @@ import Svg,{
     Circle,
     Ellipse,
     Rect,
+    Polyline,
+    Polygon,
+    Path,
+    Text,
+    Image as SvgImage,
     G,
     Symbol,
     Use,
-    Text,
     TextPath,
+    ClipPath,
     TSpan,
     Defs,
     Stop,
     LinearGradient,
-    RadialGradient,
-    Polyline,
-    ClipPath,
-    Path,
-    Polygon,
-    Image as SvgImage
+    RadialGradient
 } from 'react-native-svg';
 import {
     Animated,
