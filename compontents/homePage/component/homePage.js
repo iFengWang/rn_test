@@ -26,7 +26,8 @@ import {
 } from 'react-native';
 import ViewPager from 'react-native-viewpager';
 
-// import ImPage from '../../imPage';
+import ImPage from '../../imPage';
+import PhotoPage from './photoPage';
 
 let screen = Dimensions.get('window');
 
@@ -90,7 +91,7 @@ export default class homePage extends Component {
                 <ViewPager 
                     ref={(viewpager) => {this.viewpager = viewpager}}
                     style={{flex:1}}
-                    locked={true}
+                    locked={false}
                     initialPage={this.state.currentPage}
                     autoPlay={false}
                     isLoop={false}
@@ -143,7 +144,7 @@ export default class homePage extends Component {
                         flex:1,
                         backgroundColor:pageId%2==0?'#CCCCCC':'#666666'}}
                     key={pageId+''} >
-                        {/* <ImPage /> */}
+                        <ImPage />
                     </ScrollView>
                 );
             case '1':
@@ -155,11 +156,12 @@ export default class homePage extends Component {
                     key={pageId+''} >
                         <Text style={{textAlign:'center'}}>{data.content}</Text>
                         <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
-                            <TouchableOpacity onPress={() => this._onPress()}>
-                                <View style={styles.button}>
-                                <Text style={styles.buttonText}>Press me!</Text>
-                                </View>
-                            </TouchableOpacity>
+                        <TouchableOpacity onPress={() => this._onPress()}>
+                            <View style={styles.button}>
+                            <Text style={styles.buttonText}>Press me!</Text>
+                            </View>
+                        </TouchableOpacity>
+                        <PhotoPage />
                     </ScrollView>
                 );
                 case '2':

@@ -38,6 +38,7 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		BA8E0F0C1FD1276B00381313 /* TestModule.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8E0F0B1FD1276B00381313 /* TestModule.m */; };
 		BA8E0F281FD162A200381313 /* twoModule.m in Sources */ = {isa = PBXBuildFile; fileRef = BA8E0F271FD162A200381313 /* twoModule.m */; };
+		BA981F331FE7A26500E9FA63 /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA981F1B1FE7A24400E9FA63 /* libRCTCameraRoll.a */; };
 		FAB004F9F7374A4CA91E13C3 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2CC84F74B2946C89DC527D8 /* libRNSVG.a */; };
 /* End PBXBuildFile section */
 
@@ -238,6 +239,13 @@
 			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
 			remoteInfo = RNSVG;
 		};
+		BA981F1A1FE7A24400E9FA63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA981F131FE7A24400E9FA63 /* RCTCameraRoll.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 58B5115D1A9E6B3D00147676;
+			remoteInfo = RCTCameraRoll;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -270,6 +278,7 @@
 		BA8E0F0B1FD1276B00381313 /* TestModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestModule.m; sourceTree = "<group>"; };
 		BA8E0F261FD162A200381313 /* twoModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twoModule.h; sourceTree = "<group>"; };
 		BA8E0F271FD162A200381313 /* twoModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = twoModule.m; sourceTree = "<group>"; };
+		BA981F131FE7A24400E9FA63 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		C2CC84F74B2946C89DC527D8 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -286,6 +295,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA981F331FE7A26500E9FA63 /* libRCTCameraRoll.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
@@ -457,6 +467,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				BA981F131FE7A24400E9FA63 /* RCTCameraRoll.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -509,6 +520,14 @@
 			isa = PBXGroup;
 			children = (
 				BA8D10F91FE0BF5D007DA89B /* libRNSVG.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA981F141FE7A24400E9FA63 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA981F1B1FE7A24400E9FA63 /* libRCTCameraRoll.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -631,6 +650,10 @@
 				{
 					ProductGroup = 5E91572E1DD0AC6500FF2AA8 /* Products */;
 					ProjectRef = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
+				},
+				{
+					ProductGroup = BA981F141FE7A24400E9FA63 /* Products */;
+					ProjectRef = BA981F131FE7A24400E9FA63 /* RCTCameraRoll.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
@@ -864,6 +887,13 @@
 			fileType = archive.ar;
 			path = libRNSVG.a;
 			remoteRef = BA8D10F81FE0BF5D007DA89B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BA981F1B1FE7A24400E9FA63 /* libRCTCameraRoll.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTCameraRoll.a;
+			remoteRef = BA981F1A1FE7A24400E9FA63 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
