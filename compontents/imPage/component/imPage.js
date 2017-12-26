@@ -13,6 +13,7 @@ import {
     ScrollView,
     Image
 } from 'react-native';
+import { Actions, ActionConst } from 'react-native-router-flux';
 
 import Immutable,{Map,List,Set} from 'immutable';
 import Cursor from '../../../node_modules/immutable/contrib/cursor';
@@ -70,6 +71,26 @@ class imPage extends Component {
                     <Text key='000' style={{lineHeight:50}}>IM首页</Text>
                     {Object.keys(this.props.state).map(key => <Text key={key+''}>{this.props.state[key+''].name}</Text>)}
                 </View>
+
+                <Animated.View style={{flex:1,flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+                    <TouchableOpacity 
+                        style={{margin:2,width:100,height:40,backgroundColor:'brown',justifyContent:'center',alignItems:'center'}}
+                        onPress={ () => Actions.tab_main()}>
+                            <Text>切换Tab</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity 
+                        style={{margin:2,width:100,height:40,backgroundColor:'brown',justifyContent:'center',alignItems:'center'}}
+                        onPress={ () => Actions.home_two()}>
+                            <Text>同Tab内push</Text>
+                    </TouchableOpacity>
+                
+                    <TouchableOpacity 
+                        style={{margin:2,width:100,height:40,backgroundColor:'brown',justifyContent:'center',alignItems:'center'}}
+                        onPress={ () => Actions.login()}>
+                            <Text>Modal</Text>
+                    </TouchableOpacity>
+                </Animated.View>
 
                 <TwoPage />
                 <SvgPage active={false} />

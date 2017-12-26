@@ -25,7 +25,6 @@ import {
     Image,
     Share
 } from 'react-native';
-import { Actions, ActionConst } from 'react-native-router-flux';
 import ViewPager from 'react-native-viewpager';
 
 import ImPage from '../../imPage';
@@ -147,13 +146,6 @@ export default class homePage extends Component {
                         backgroundColor:pageId%2==0?'#CCCCCC':'#666666'}}
                     key={pageId+''} >
                         <ImPage key='0' />
-
-                        <TouchableOpacity 
-                        style={{width:150,height:40,backgroundColor:'brown',justifyContent:'center',alignItems:'center'}}
-                        onPress={ () => Actions.tab_main()}>
-                            <Text>路由路转</Text>
-                        </TouchableOpacity>
-
                     </ScrollView>
                 );
             case '1':
