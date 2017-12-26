@@ -12,7 +12,8 @@ import {
   View
 } from 'react-native';
 
-import HomePage from './compontents/homePage';
-import ImPage from './compontents/imPage';
+// import HomePage from './compontents/homePage';
+// import ImPage from './compontents/imPage';
+import XSYRouter from './router';
 
-AppRegistry.registerComponent('rn_test', () => HomePage);
+AppRegistry.registerComponent('rn_test', () => XSYRouter);

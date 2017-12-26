@@ -18,6 +18,7 @@ import Immutable,{Map,List,Set} from 'immutable';
 import Cursor from '../../../node_modules/immutable/contrib/cursor';
 import TwoPage from './twoPage';
 import SvgPage from './svgPage';
+import TestPage from './testPage';
 
 let screen = Dimensions.get('window');
 
@@ -72,6 +73,7 @@ class imPage extends Component {
 
                 <TwoPage />
                 <SvgPage active={false} />
+                <TestPage {...this.props} />
 
                 {/* <Animated.View ref='dongView' 
                 style={{

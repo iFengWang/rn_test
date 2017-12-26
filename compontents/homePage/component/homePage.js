@@ -22,8 +22,10 @@ import {
     NativeModules,
     Alert,
     ScrollView,
-    Image
+    Image,
+    Share
 } from 'react-native';
+import { Actions, ActionConst } from 'react-native-router-flux';
 import ViewPager from 'react-native-viewpager';
 
 import ImPage from '../../imPage';
@@ -144,7 +146,14 @@ export default class homePage extends Component {
                         flex:1,
                         backgroundColor:pageId%2==0?'#CCCCCC':'#666666'}}
                     key={pageId+''} >
-                        <ImPage />
+                        <ImPage key='0' />
+
+                        <TouchableOpacity 
+                        style={{width:150,height:40,backgroundColor:'brown',justifyContent:'center',alignItems:'center'}}
+                        onPress={ () => Actions.tab_main()}>
+                            <Text>路由路转</Text>
+                        </TouchableOpacity>
+
                     </ScrollView>
                 );
             case '1':
@@ -154,6 +163,7 @@ export default class homePage extends Component {
                         flex:1,
                         backgroundColor:pageId%2==0?'#CCCCCC':'#666666'}}
                     key={pageId+''} >
+                        <ImPage />
                         <Text style={{textAlign:'center'}}>{data.content}</Text>
                         <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
                         <TouchableOpacity onPress={() => this._onPress()}>
@@ -167,6 +177,7 @@ export default class homePage extends Component {
                 case '2':
                     return (
                         <ScrollView
+                        keyboardShouldPersistTaps='always'
                         style={{
                             flex:1,
                             backgroundColor:pageId%2==0?'#CCCCCC':'#666666',
@@ -204,36 +215,33 @@ export default class homePage extends Component {
                                 </TouchableHighlight>
                             </View>
 
-
                             {state.isFething 
                             ? 
                             <Modal
                             animationType={"fade"}
                             transparent={true}>
-                                <View style={{flex:1, justifyContent:'center',alignItems:'center', backgroundColor:'rgba(0, 0, 0, 0.7)'}}>
-                                    <ActivityIndicator 
-                                    animating={this.state.show}
-                                    color='green'
-                                    ref='aaaaa'
-                                    size='large'
-                                    hidesWhenStopped={true}
-                                    style={styles.activity} />
-                                </View>
+                              <View style={{flex:1, justifyContent:'center',alignItems:'center', backgroundColor:'rgba(0, 0, 0, 0.7)'}}>
+                                <ActivityIndicator  
+                                  animating={this.state.show}
+                                  color='green'
+                                  ref='aaaaa'
+                                  size='large'
+                                  hidesWhenStopped={true}
+                                  style={styles.activity} />
+                              </View>
                             </Modal> 
                             : 
                             <View style={{backgroundColor:'red',width:screen.width,height:200}}>
-                                {state.items && Object.keys(state.items).map(key => <Text key={key+''}>{state.items[key+'']}</Text>)}
+                              {state.items && Object.keys(state.items).map(key => <Text key={key+''}>{state.items[key+'']}</Text>)}
                             </View>
                             }
 
-
                             <View>
-                                <Switch
-                                    onValueChange={(value) => this.setState({falseSwitchIsOn: value})}
-                                    style={{marginBottom:10,marginTop:10}}
-                                    value={this.state.falseSwitchIsOn} />
-
-                                <Slider 
+                              <Switch
+                                onValueChange={(value) => this.setState({falseSwitchIsOn: value})}
+                                style={{marginBottom:10,marginTop:10}}
+                                value={this.state.falseSwitchIsOn} />
+                              <Slider 
                                 style={{width:screen.width-30*2}}
                                 minimumTrackTintColor='red'
                                 maximumTrackTintColor='green'
@@ -241,8 +249,7 @@ export default class homePage extends Component {
                                 maximumValue={100}
                                 value={50}
                                 step={1} />
-
-                                <StatusBar barStyle='default' />
+                              <StatusBar barStyle='default' />
                             </View>
 
                             <Modal
@@ -259,16 +266,16 @@ export default class homePage extends Component {
                                     borderRadius:10,
                                     justifyContent:'flex-start',
                                     alignItems:'center',shadowColor:'black',shadowOpacity:0.5,shadowOffset:{x:5,y:5},shadowRadius:5}}>
-                                        <Text style={{padding:10,lineHeight:25,fontSize:20, color:'#333333'}}>温馨提示</Text>
-                                        <Text style={{paddingLeft:20,paddingRight:20,lineHeight:25, color:'#666666',height:90}}>正文在此，好人一生平安，我们都有一个家，名字叫中国，兄弟姐妹都很多，景色也不错！</Text>
-                                        <View style={{flexDirection:'row',justifyContent:'center',alignItems:'flex-end'}}>
-                                            <TouchableOpacity onPress={() => {this._setModalVisible(!this.state.modalVisible)}}>
-                                                <Text style={{margin:10,width:80,height:35,borderRadius:5,borderWidth:1,textAlign:'center',lineHeight:35}}>取消</Text>
-                                            </TouchableOpacity>
-                                            <TouchableOpacity onPress={() => {this._setModalVisible(!this.state.modalVisible)}}>
-                                                <Text style={{margin:10,width:80,height:35,borderRadius:5,borderWidth:1,textAlign:'center',lineHeight:35}}>确定</Text>
-                                            </TouchableOpacity>
-                                        </View>
+                                      <Text style={{padding:10,lineHeight:25,fontSize:20, color:'#333333'}}>温馨提示</Text>
+                                      <Text style={{paddingLeft:20,paddingRight:20,lineHeight:25, color:'#666666',height:90}}>正文在此，好人一生平安，我们都有一个家，名字叫中国，兄弟姐妹都很多，景色也不错！</Text>
+                                      <View style={{flexDirection:'row',justifyContent:'center',alignItems:'flex-end'}}>
+                                        <TouchableOpacity onPress={() => {this._setModalVisible(!this.state.modalVisible)}}>
+                                          <Text style={{margin:10,width:80,height:35,borderRadius:5,borderWidth:1,textAlign:'center',lineHeight:35}}>取消</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity onPress={() => {this._setModalVisible(!this.state.modalVisible)}}>
+                                          <Text style={{margin:10,width:80,height:35,borderRadius:5,borderWidth:1,textAlign:'center',lineHeight:35}}>确定</Text>
+                                        </TouchableOpacity>
+                                      </View>
                                     </View>
                                 </View>
                             </Modal>
@@ -279,19 +286,28 @@ export default class homePage extends Component {
                             visible={this.state.showPicker}
                             onShow={()=>{alert('show.......')}}
                             onRequestClose={() => {alert("Modal has been closed.")}}>
-                                <View style={{flex:1, justifyContent:'flex-end',alignItems:'center', backgroundColor:'rgba(0, 0, 0, 0.5)'}}>
-                                    <Picker
-                                    style={{width:375,backgroundColor:'white',alignSelf:'flex-end'}}
-                                    selectedValue={this.state.language}
-                                    onValueChange={(lang) => this.setState({language: lang,showPicker:false})}>
-                                    <Picker.Item label="Java" value="java" />
-                                    <Picker.Item label="JavaScript" value="js" />
-                                    <Picker.Item label="Go" value="go" />
-                                    <Picker.Item label="Python" value="py" />
-                                    <Picker.Item label="C++" value="c++" />
-                                    </Picker>
-                                </View>
+                              <View style={{flex:1, justifyContent:'flex-end',alignItems:'center', backgroundColor:'rgba(0, 0, 0, 0.5)'}}>
+                                <Picker
+                                  style={{width:375,backgroundColor:'white',alignSelf:'flex-end'}}
+                                  selectedValue={this.state.language}
+                                  onValueChange={(lang) => this.setState({language: lang,showPicker:false})}>
+                                <Picker.Item label="Java" value="java" />
+                                <Picker.Item label="JavaScript" value="js" />
+                                <Picker.Item label="Go" value="go" />
+                                <Picker.Item label="Python" value="py" />
+                                <Picker.Item label="C++" value="c++" />
+                                </Picker>
+                              </View>
                             </Modal>
+
+                            <TouchableOpacity 
+                              onPress={() => this._share()} 
+                              style={{
+                                width:100,height:40,backgroundColor:'yellow',
+                                borderWidth:StyleSheet.hairlineWidth, 
+                                borderColor:'red',justifyContent:'center',alignItems:'center'}}>
+                              <Text style={{shadowColor:'green',shadowOffset:{width:5,height:5}}}>分享</Text>
+                            </TouchableOpacity>
 
                         </ScrollView>
                     );
@@ -302,6 +318,25 @@ export default class homePage extends Component {
 
     _111() {
         let {state, actions} = this.props;
+    }
+
+    _share() {
+        Share.share(
+            {
+                message:'好人一生平安',
+                url:"http://www.baidu.com",
+                title:"分享的主题"
+            },
+            {
+                dialogTitle: '您要分享到哪里？',
+                excludedActivityTypes: [
+                  'com.apple.UIKit.activity.PostToTwitter'
+                ],
+                tintColor: 'green'
+            }
+        )
+        .then((result)=> alert('分享成功'+JSON.stringify(result)))
+        .catch((err) => alert(err));
     }
 }
 

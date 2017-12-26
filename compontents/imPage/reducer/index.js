@@ -1,8 +1,8 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import imReducer from './imReducer';
 
 let imReducers = combineReducers({
-    imReducer
+  imReducer
 });
 
 export default imReducers;
