@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Router,Tabs, Stack, Scene, ActionConst} from 'react-native-router-flux';
+import { Router,Tabs, Modal, Stack, Scene, ActionConst} from 'react-native-router-flux';
 
 import LoginPage from './compontents/loginPage/components/loginPage';
+import ForgetPage from './compontents/loginPage/components/forgetPwd';
+import Register from './compontents/loginPage/components/register';
+
 import HomePage from './compontents/homePage';
 import ImPage from './compontents/imPage';
 import PhotoPage from './compontents/homePage/component/photoPage';
@@ -12,8 +15,14 @@ class XSYRouter extends Component {
     return (
       <Router>
         <Scene key="root">
-
-          <Scene key="login" init={true} component={LoginPage} title="login" hideNavBar={true} modal={true} type={ActionConst.RESET} />
+        
+          <Modal key="modal" >
+            <Stack key="account" hideNavBar={true} init={true}>
+              <Scene key="login" init={true} component={LoginPage} title="login" hideNavBar={false} />
+              <Scene key="forget" component={ForgetPage} title="forget" hideNavBar={false} />
+              <Scene key="register" component={Register} title="register" hideNavBar={false} />
+            </Stack>
+          </Modal>
 
           <Tabs key="tab_main" 
           type={ActionConst.RESET} 
