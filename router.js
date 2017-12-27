@@ -19,7 +19,13 @@ class XSYRouter extends Component {
     return (
       <Router>
         <Modal key="root">
-          
+        
+          <Stack key="unlogin" hideNavBar={true}>
+            <Scene key="login" init={true} component={LoginPage} hideNavBar={true} navTransparent={true}/>
+            <Scene key="forget" component={ForgetPage} title="forget" hideNavBar={false} />
+            <Scene key="register" component={Register} title="register" hideNavBar={false} />
+          </Stack>
+
           <Tabs key="tab_main" 
             wrap={false}
             type={ActionConst.RESET} 
@@ -78,14 +84,8 @@ class XSYRouter extends Component {
             </Stack>
           </Tabs>
 
-          <Stack key="account" hideNavBar={true}>
-            <Scene key="login" init={true} component={LoginPage} title="login" />
-            <Scene key="forget" component={ForgetPage} title="forget" hideNavBar={false} />
-            <Scene key="register" component={Register} title="register" hideNavBar={false} />
-          </Stack>
-
           <Drawer key="menu" drawerWidth={100}>
-            <Scene key="message_two" component={ImPage} />
+            <Scene key="menu_two" component={ImPage} />
           </Drawer>
 
           <Lightbox key="lightbox">

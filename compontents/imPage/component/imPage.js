@@ -100,7 +100,7 @@ class imPage extends Component {
 
           <TouchableOpacity
             style={{ margin: 2, width: 85, height: 40, backgroundColor: 'brown', justifyContent: 'center', alignItems: 'center' }}
-            onPress={() => Actions.lightbox_one()}>
+            onPress={() => Actions.menu()}>
             <Text>Drawer</Text>
           </TouchableOpacity>
 
