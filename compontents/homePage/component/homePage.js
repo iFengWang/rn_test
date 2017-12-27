@@ -155,6 +155,7 @@ export default class homePage extends Component {
                         flex:1,
                         backgroundColor:pageId%2==0?'#CCCCCC':'#666666'}}
                     key={pageId+''} >
+                        <PhotoPage />
                         <ImPage />
                         <Text style={{textAlign:'center'}}>{data.content}</Text>
                         <View style={[styles.box, {width: this.state.w, height: this.state.h}]} />
@@ -163,7 +164,6 @@ export default class homePage extends Component {
                             <Text style={styles.buttonText}>Press me!</Text>
                             </View>
                         </TouchableOpacity>
-                        <PhotoPage />
                     </ScrollView>
                 );
                 case '2':
