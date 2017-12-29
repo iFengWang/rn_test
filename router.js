@@ -23,7 +23,7 @@ class XSYRouter extends Component {
         
           <Scene key="launch" component={LaunchPage} hideNavBar={true} />
 
-          <Stack key="unlogin" hideNavBar={true}>
+          <Stack key="loginUi" hideNavBar={true} type={ActionConst.RESET}>
             <Scene key="login" component={LoginPage} hideNavBar={true} navTransparent={true}/>
             <Scene key="forget" component={ForgetPage} title="forget" hideNavBar={false} />
             <Scene key="register" component={Register} title="register" hideNavBar={false} />
