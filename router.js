@@ -62,7 +62,7 @@ class XSYRouter extends Component {
             <Stack key="crm" 
             hideNavBar={true} 
             navTransparent={false} 
-            icon={() => <Image source={require('./images/3.jpeg')} style={{width:30,height:30}} />}
+            icon={() => <Image source={require('./images/3.png')} style={{width:30,height:30}} />}
             >
               <Scene key="crm_one" init={true} component={ImPage} title="crm_one" hideNavBar={false} navTransparent={false} lazy={true} />
               <Scene key="crm_two" component={PhotoPage} title="crm_two" hideTabBar={false} hideNavBar={true} lazy={true} />

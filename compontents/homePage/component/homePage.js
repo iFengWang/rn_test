@@ -71,7 +71,6 @@ export default class homePage extends Component {
   }
 
   _renderNavBar(state) {
-
     return (
       <View style={{ width: screen.width, height: 64, backgroundColor: '#999999', flexDirection: 'row', justifyContent: 'center' }}>
         {state.pages.map((page, index) =>
@@ -79,7 +78,6 @@ export default class homePage extends Component {
             <Text style={[styles.titleTxt, { color: this.state.currentPage == index ? '#ff0000' : '#000000' }]}>{page.title}</Text>
           </TouchableOpacity>
         )}
-
       </View>
     );
   }
@@ -99,8 +97,7 @@ export default class homePage extends Component {
           dataSource={this.state.pages}
           renderPage={this._renderPage.bind(this)}
           renderPageIndicator={false}
-          onChangePage={(pageIndex) => this.setState({ currentPage: pageIndex })}
-        />
+          onChangePage={(pageIndex) => this.setState({ currentPage: pageIndex })} />
       </View>
     );
   }
