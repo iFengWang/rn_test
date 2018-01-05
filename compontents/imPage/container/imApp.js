@@ -6,7 +6,9 @@ import thunk from 'redux-thunk';
 import ImContainer from './imContainer';
 import ImReducer from '../reducer';
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+import {logger, crash} from '../../../middlewares/logger';
+
+const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
 let store = createStoreWithMiddleware(ImReducer);
 
 class imApp extends Component {

@@ -51,11 +51,11 @@ class photoPage extends Component {
 
             //删除ImageStore 内存中的图片-------
             ImageStore.hasImageForTag(uri, (has) => {
-                console.log('1.......',has);
+                console.log('111.......',has);
             });
             ImageStore.removeImageForTag(uri);
             ImageStore.hasImageForTag(uri, (has) => {
-                console.log('2.......',has);
+                console.log('222.......',has);
             });
             //--------------------------------
         })
@@ -101,10 +101,10 @@ class photoPage extends Component {
         // NetInfo.isConnected.addEventListener('change', handleFirstConnectivityChange);
 
         NetInfo.fetch().done((reach) => {
-            console.log('1.......',reach);
+            // console.log('1.......',reach);
         });
         function netChangeHandler(reach) {
-            console.log('2......',reach);
+            // console.log('2......',reach);
         }
         NetInfo.addEventListener('change',netChangeHandler);
 

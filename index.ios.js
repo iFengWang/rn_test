@@ -14,4 +14,7 @@ import {
 // import ImPage from './compontents/imPage';
 import XSYRouter from './router';
 
+// import Logger from './middlewares/logger';
+// Logger('vvvvvv');
+
 AppRegistry.registerComponent('rn_test', () => XSYRouter);
