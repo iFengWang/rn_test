@@ -17,4 +17,14 @@ import XSYRouter from './router';
 // import Logger from './middlewares/logger';
 // Logger('vvvvvv');
 
-AppRegistry.registerComponent('rn_test', () => XSYRouter);
+import XsyText from './compontents/xsyText/components/xsyText';
+
+class App extends Component {
+  render() {
+    return (
+      <XsyText title='我是标题' value='我是内容' layout='V' />
+    );
+  }
+}
+
+AppRegistry.registerComponent('rn_test', () => App);

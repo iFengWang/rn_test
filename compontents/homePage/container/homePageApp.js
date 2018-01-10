@@ -13,6 +13,7 @@ const store = createStoreWithMiddleware(reducer);
 class homePageApp extends Component {
   constructor(props) {
     super(props);
+    // generateId();
   }
 
   render() {
