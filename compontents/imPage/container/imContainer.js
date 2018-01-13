@@ -25,6 +25,6 @@ export default connect(
   }),
   dispatch => ({
     action: bindActionCreators(ImAction, dispatch),
-    homeAction: bindActionCreators(HomeAction, dispatch)
+    // homeAction: bindActionCreators(HomeAction, dispatch)
   })
 )(imContainer);

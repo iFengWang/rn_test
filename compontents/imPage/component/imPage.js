@@ -18,7 +18,7 @@ import { Actions, ActionConst } from 'react-native-router-flux';
 import Immutable, { Map, List, Set } from 'immutable';
 import Cursor from '../../../node_modules/immutable/contrib/cursor';
 import TwoPage from './twoPage';
-import SvgPage from './svgPage';
+// import SvgPage from './svgPage';
 import TestPage from './testPage';
 
 let screen = Dimensions.get('window');
@@ -66,7 +66,7 @@ class imPage extends Component {
 
   render() {
     return (
-      <Animated.View style={styles.container}>
+      <Animated.ScrollView style={{flex: 1}} >
         <View style={{ width: screen.width, height: 100, backgroundColor: 'pink' }}>
           <Text key='000' style={{ lineHeight: 50 }}>IM首页</Text>
           {Object.keys(this.props.state).map(key => <Text key={key + ''}>{this.props.state[key + ''].name}</Text>)}
@@ -107,7 +107,7 @@ class imPage extends Component {
         </Animated.View>
 
         <TwoPage />
-        <SvgPage active={false} />
+        
         <TestPage {...this.props} />
 
         {/* <Animated.View ref='dongView' 
@@ -146,7 +146,7 @@ class imPage extends Component {
 
 
 
-      </Animated.View>
+      </Animated.ScrollView>
     );
   }
 

@@ -63,7 +63,7 @@ class LoginPage extends Component {
           <Animated.Text style={{color:'white'}}>登 录</Animated.Text>
         </TouchableOpacity>
 
-        <Animated.View style={{height:150, flexDirection:'row', justifyContent:'center', alignItems:'space-between'}}>
+        <Animated.View style={{height:150, flexDirection:'row', justifyContent:'center'}}>
           <TouchableOpacity 
           onPress={()=> Actions.forget()}
           style={{

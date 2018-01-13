@@ -137,9 +137,8 @@ class photoPage extends Component {
                 </View>
                 <View style={{flex:1,flexDirection:'row', flexWrap:'wrap',padding:5}}>
                     {this.state.images.map((item,index) => {
-                    return <View style={{margin:5,width:110,height:110, borderWidth:1, borderColor:'yellow', borderRadius:5, borderStyle:'dashed'}}>
-                        <Image 
-                        key={index} 
+                    return <View key={index} style={{margin:5,width:110,height:110, borderWidth:1, borderColor:'yellow', borderRadius:5, borderStyle:'dashed'}}>
+                        <Image  
                         source={{uri:item}} 
                         style={{flex:1, borderRadius:5}} 
                         resizeMode="stretch" />

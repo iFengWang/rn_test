@@ -26,8 +26,6 @@ import {
   Share
 } from 'react-native';
 import ViewPager from 'react-native-viewpager';
-
-import ImPage from '../../imPage';
 import PhotoPage from './photoPage';
 
 let screen = Dimensions.get('window');
@@ -72,7 +70,7 @@ export default class homePage extends Component {
 
   _renderNavBar(state) {
     return (
-      <View style={{ width: screen.width, height: 64, backgroundColor: '#999999', flexDirection: 'row', justifyContent: 'center' }}>
+      <View style={{ width: screen.width, height: 64, backgroundColor: '#108340', flexDirection: 'row', justifyContent: 'center' }}>
         {state.pages.map((page, index) =>
           <TouchableOpacity key={index} onPress={() => this.viewpager.goToPage(index)}>
             <Text style={[styles.titleTxt, { color: this.state.currentPage == index ? '#ff0000' : '#000000' }]}>{page.title}</Text>
@@ -143,7 +141,15 @@ export default class homePage extends Component {
               backgroundColor: pageId % 2 == 0 ? '#CCCCCC' : '#666666'
             }}
             key={pageId + ''} >
-            <ImPage key='0' />
+
+            <Text style={{ textAlign: 'center', lineHeight:50 }}>{data.content}</Text>
+            <View style={[styles.box, { width: this.state.w, height: this.state.h }]} />
+            <TouchableOpacity 
+            style={{backgroundColor:'red',width:100,height:40,justifyContent:'center',alignItems:'center'}}
+            onPress={() => this._onPress()}>
+              <Text style={styles.buttonText}>Press me!</Text>
+            </TouchableOpacity>
+
           </ScrollView>
         );
       case '1':
@@ -154,15 +160,9 @@ export default class homePage extends Component {
               backgroundColor: pageId % 2 == 0 ? '#CCCCCC' : '#666666'
             }}
             key={pageId + ''} >
+
             <PhotoPage />
-            <ImPage />
-            <Text style={{ textAlign: 'center' }}>{data.content}</Text>
-            <View style={[styles.box, { width: this.state.w, height: this.state.h }]} />
-            <TouchableOpacity onPress={() => this._onPress()}>
-              <View style={styles.button}>
-                <Text style={styles.buttonText}>Press me!</Text>
-              </View>
-            </TouchableOpacity>
+
           </ScrollView>
         );
       case '2':
@@ -277,7 +277,7 @@ export default class homePage extends Component {
               animationType={"fade"}
               transparent={true}
               visible={this.state.showPicker}
-              onShow={() => { alert('show.......') }}
+              // onShow={() => { alert('show.......') }}
               onRequestClose={() => { alert("Modal has been closed.") }}>
               <View style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
                 <Picker

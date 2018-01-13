@@ -13,7 +13,10 @@ import Register from './compontents/loginPage/components/register';
 import HomePage from './compontents/homePage';
 import ImPage from './compontents/imPage';
 import PhotoPage from './compontents/homePage/component/photoPage';
-import SvgPage from './compontents/imPage/component/svgPage';
+// import SvgPage from './compontents/imPage/component/svgPage';
+import CrmPage from './compontents/crmPage/components/crmPage';
+import OaPage from './compontents/oaPage/components/oaPage';
+import MePage from './compontents/mePage/components/mePage';
 
 class XSYRouter extends Component {
   render() {
@@ -46,17 +49,18 @@ class XSYRouter extends Component {
             navTransparent={false} 
             icon={() => <Image source={require('./images/1.png')} style={{width:30,height:30}} />}
             >
-              <Scene key="home_one" init={true} component={HomePage} title="one" hideNavBar={true} />
+              <Scene key="home_one" init={true} component={HomePage} title="首页" hideNavBar={true} />
               <Scene key="home_two" component={PhotoPage} title="two" hideTabBar={true} hideNavBar={false} lazy={true} />
             </Stack>
             
-            <Stack key="message" 
+            <Stack key="im" 
             hideNavBar={true} 
+            navigationBarStyle={{backgroundColor:'red'}}
             navTransparent={false} 
             icon={() => <Image source={require('./images/2.png')} style={{width:30,height:30}} />}
             >
-              <Scene key="message_one" init={true} component={PhotoPage} title="message_one" hideNavBar={false} navTransparent={false} lazy={true} />
-              <Scene key="message_two" component={ImPage} title="message_two" hideTabBar={false} hideNavBar={true} lazy={true} />
+              <Scene key="im_one" 
+              init={true} component={ImPage} title="聊天" hideNavBar={false} navTransparent={false} lazy={true} />
             </Stack>
             
             <Stack key="crm" 
@@ -64,8 +68,7 @@ class XSYRouter extends Component {
             navTransparent={false} 
             icon={() => <Image source={require('./images/3.png')} style={{width:30,height:30}} />}
             >
-              <Scene key="crm_one" init={true} component={ImPage} title="crm_one" hideNavBar={false} navTransparent={false} lazy={true} />
-              <Scene key="crm_two" component={PhotoPage} title="crm_two" hideTabBar={false} hideNavBar={true} lazy={true} />
+              <Scene key="crm_one" init={true} component={CrmPage} title="CRM" hideNavBar={false} navTransparent={false} lazy={true} />
             </Stack>
             
             <Stack key="oa" 
@@ -73,8 +76,7 @@ class XSYRouter extends Component {
             navTransparent={false} 
             icon={() => <Image source={require('./images/4.png')} style={{width:30,height:30}} />}
             >
-              <Scene key="oa_one" init={true} component={ImPage} title="oa_one" hideNavBar={false} navTransparent={false} lazy={true} />
-              <Scene key="oa_two" component={PhotoPage} title="oa_two" hideTabBar={false} hideNavBar={true} lazy={true} />
+              <Scene key="oa_one" init={true} component={OaPage} title="OA" hideNavBar={false} navTransparent={false} lazy={true} />
             </Stack>
             
             <Stack key="me" 
@@ -82,8 +84,7 @@ class XSYRouter extends Component {
             navTransparent={false} 
             icon={() => <Image source={require('./images/5.png')} style={{width:30,height:30}} />}
             >
-              <Scene key="me_one" init={true} component={PhotoPage} title="me_one" hideNavBar={false} navTransparent={false} lazy={true} />
-              <Scene key="me_two" component={ImPage} title="me_two" hideTabBar={false} hideNavBar={true} lazy={true} />
+              <Scene key="me_one" init={true} component={MePage} title="个人中心" hideNavBar={true} navTransparent={false} lazy={true} />
             </Stack>
           </Tabs>
 
