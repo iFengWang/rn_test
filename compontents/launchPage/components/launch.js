@@ -18,7 +18,7 @@ class BasePage extends Component {
     let timer = setTimeout(function(){
       Actions.login({type:ActionConst.REPLACE});
       clearTimeout(timer);
-    },2000);
+    },1000);
   }
 
   show() {
