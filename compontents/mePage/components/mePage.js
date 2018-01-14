@@ -11,7 +11,7 @@ import {
         return (
             <Animated.ScrollView  style={styles.container}>
                 <Animated.Image source={require('../images/banner1.png')} style={{width:screen.width,height:200}} />
-
+                
             </Animated.ScrollView>
         );
      }

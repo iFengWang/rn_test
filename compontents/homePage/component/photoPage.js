@@ -126,7 +126,7 @@ class photoPage extends Component {
                     <TextInput 
                     style={{flex:1, borderWidth:1, borderColor:'gray'}} 
                     onChange={(event) => this.setState({curUrl:event.nativeEvent.text})} 
-                    autoFocus={true}
+                    autoFocus={false}
                     placeholder={'请输入url'}
                     enablesReturnKeyAutomatically={true}
                     keyboardAppearance={'dark'}
