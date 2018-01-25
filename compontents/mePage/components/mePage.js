@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
 import {
     Animated,
-    Dimensions
+    Dimensions,
+    Text,
+    Image
  } from 'react-native';
  import { MKButton, MKColor } from 'react-native-material-kit';
 
@@ -25,7 +27,7 @@ const AccentColoredRaisedButton = MKButton.accentColoredButton()
     .build();
 
 const FlatButton = MKButton.flatButton()
-    .withText('BUTTON')
+    // .withText('BUTTON')
     .withStyle({margin:5})
     .build();
 
@@ -77,10 +79,23 @@ const CustomButton = new MKButton.Builder()
                 <ColoredRaisedButton />
                 <AccentColoredRaisedButton />
                 
-                <FlatButton />
-                <ColoredFab />
-                <AccentColoredFab />
-                <PlainFab />
+                <Animated.View style={{flex:1, flexDirection:'row'}}>
+                    <FlatButton>
+                        <Image source={require('../../../images/2.png')} style={{width:30, height:30}} />
+                    </FlatButton>
+                    
+                    <ColoredFab>
+                        <Text style={{fontSize:30, color:'white'}}>+</Text>
+                    </ColoredFab>
+
+                    <AccentColoredFab>
+                        <Text style={{fontSize:30, color:'white'}}>-</Text>
+                    </AccentColoredFab>
+
+                    <PlainFab>
+                        <Image source={require('../../../images/1.png')} style={{width:30, height:30}} />
+                    </PlainFab>
+                </Animated.View>
 
                 <CustomButton />
 
