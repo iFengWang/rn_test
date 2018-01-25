@@ -20,7 +20,7 @@ class timerComponent extends Component {
     }
 
     componentDidMount() {
-        this.timer();
+        // this.timer();
     }
 
     render() {

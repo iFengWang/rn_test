@@ -18,4 +18,6 @@ import XSYRouter from './router';
 // import Logger from './middlewares/logger';
 // Logger('vvvvvv');
 
+import XSYHomePage from './compontents/homePage'
+
 AppRegistry.registerComponent('rn_test', () => XSYRouter);

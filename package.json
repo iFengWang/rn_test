@@ -10,7 +10,8 @@
     "immutable": "^3.8.1",
     "react": "16.0.0-alpha.6",
     "react-native": "0.44.0",
-    "react-native-router-flux": "^4.0.0-beta.24",
+    "react-native-material-kit": "^0.5.1",
+    "react-native-router-flux": "4.0.0-beta.24",
     "react-native-sound": "^0.10.4",
     "react-native-svg": "^5.1.4",
     "react-native-viewpager": "^0.2.13",
@@ -24,7 +25,11 @@
     "babel-preset-react-native": "4.0.0",
     "jest": "21.2.1",
     "react-test-renderer": "16.0.0-alpha.6",
-    "redux-devtools": "^3.4.1"
+    "redux-devtools": "^3.4.1",
+    "redux-devtools-extension": "^2.13.2",
+    "remote-redux-devtools": "^0.5.12",
+    "remote-redux-devtools-on-debugger": "^0.8.3",
+    "remotedev-server": "^0.2.4"
   },
   "jest": {
     "preset": "react-native"

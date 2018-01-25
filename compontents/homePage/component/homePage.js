@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   StyleSheet,
   TouchableHighlight,
@@ -28,7 +29,16 @@ import {
 import ViewPager from 'react-native-viewpager';
 import PhotoPage from './photoPage';
 
-let screen = Dimensions.get('window');
+const screen = Dimensions.get('window');
+const pTypes = {
+  title:PropTypes.string.isRequire,
+  type:PropTypes.oneOf['H','V'],
+  callback:PropTypes.func.isRequire
+};
+
+const dProps = {
+  title:'feng'
+};
 
 export default class homePage extends Component {
   constructor(props) {
@@ -356,3 +366,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 });
+
+homePage.propTypes = pTypes;
+homePage.defaultProps = dProps;
